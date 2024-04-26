@@ -5,6 +5,9 @@ import org.example.second.LeftistNode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -81,5 +84,14 @@ class LeftistHeapTest {
         assertEquals(rootBeforeMerge, heap1.root);
     }
 
+    @Test
+    void testPrivateMethod() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        LeftistNode node1 = new LeftistNode(1);
+        LeftistNode node2 = new LeftistNode(2);
+        Method method = LeftistHeap.class.getDeclaredMethod("merge", LeftistNode.class, LeftistNode.class);
+        method.setAccessible(true);
+        LeftistNode result = (LeftistNode) method.invoke(heap, node1, node2);
+        assertEquals(1, result.getElement());
+    }
 
 }

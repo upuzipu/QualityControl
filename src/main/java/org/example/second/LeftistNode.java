@@ -17,4 +17,8 @@ public class LeftistNode {
         this.right = right;
         this.dist = 0;
     }
+
+    public int getElement() {
+        return element;
+    }
 }

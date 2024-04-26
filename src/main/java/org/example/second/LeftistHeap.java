@@ -36,7 +36,7 @@ public class LeftistHeap {
     }
 
     // Merge two heaps
-    public LeftistNode merge(LeftistNode x, LeftistNode y) {
+    private LeftistNode merge(LeftistNode x, LeftistNode y) {
         if (x == null)
             return y;
         if (y == null)
